@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#be123c"/>
+      <stop offset="50%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="fur" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9F5"/>
+      <stop offset="100%" stop-color="#FDE8D4"/>
+    </linearGradient>
+    <linearGradient id="ear" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E59866"/>
+      <stop offset="100%" stop-color="#CA6F1E"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle -->
+  <rect width="512" height="512" rx="128" fill="url(#bg)"/>
+
+  <!-- Left floppy puppy ear -->
+  <path d="M 120 180 C 80 180, 50 260, 80 340 C 100 390, 150 400, 175 350 C 190 320, 185 240, 160 200 Z" fill="url(#ear)" filter="url(#shadow)"/>
+  
+  <!-- Right floppy puppy ear -->
+  <path d="M 392 180 C 432 180, 462 260, 432 340 C 412 390, 362 400, 337 350 C 322 320, 327 240, 352 200 Z" fill="url(#ear)" filter="url(#shadow)"/>
+
+  <!-- Head shape -->
+  <ellipse cx="256" cy="275" rx="145" ry="135" fill="url(#fur)" filter="url(#shadow)"/>
+
+  <!-- Forehead patch -->
+  <path d="M 230 145 C 240 142, 272 142, 282 145 C 285 190, 275 220, 256 235 C 237 220, 227 190, 230 145 Z" fill="#E59866" opacity="0.65"/>
+
+  <!-- Cute big puppy eyes -->
+  <!-- Left eye -->
+  <circle cx="195" cy="255" r="22" fill="#1C1917"/>
+  <circle cx="188" cy="248" r="8" fill="#FFFFFF"/>
+  <circle cx="203" cy="263" r="4" fill="#FFFFFF"/>
+
+  <!-- Right eye -->
+  <circle cx="317" cy="255" r="22" fill="#1C1917"/>
+  <circle cx="310" cy="248" r="8" fill="#FFFFFF"/>
+  <circle cx="325" cy="263" r="4" fill="#FFFFFF"/>
+
+  <!-- Cute blush cheeks -->
+  <ellipse cx="160" cy="295" rx="18" ry="11" fill="#FB7185" opacity="0.55"/>
+  <ellipse cx="352" cy="295" rx="18" ry="11" fill="#FB7185" opacity="0.55"/>
+
+  <!-- White muzzle/snout base -->
+  <ellipse cx="256" cy="320" rx="65" ry="48" fill="#FFFFFF"/>
+
+  <!-- Puppy Nose -->
+  <path d="M 236 300 C 246 295, 266 295, 276 300 C 282 306, 274 322, 256 324 C 238 322, 230 306, 236 300 Z" fill="#1C1917"/>
+  <ellipse cx="250" cy="303" rx="4" ry="2" fill="#FFFFFF" opacity="0.6"/>
+
+  <!-- Cute Puppy Mouth line -->
+  <path d="M 256 324 L 256 338" stroke="#1C1917" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 236 338 Q 246 350, 256 338 Q 266 350, 276 338" fill="none" stroke="#1C1917" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Happy pink tongue sticking out -->
+  <path d="M 246 343 C 246 365, 266 365, 266 343 Z" fill="#F43F5E"/>
+  <path d="M 256 344 L 256 358" stroke="#BE123C" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Collar with gold tag -->
+  <path d="M 175 390 C 220 420, 292 420, 337 390" fill="none" stroke="#E11D48" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="256" cy="420" r="14" fill="#FBBF24" stroke="#D97706" stroke-width="3"/>
+  <path d="M 256 413 L 258 418 L 263 418 L 259 421 L 261 426 L 256 423 L 251 426 L 253 421 L 249 418 L 254 418 Z" fill="#FFFFFF"/>
+</svg>
