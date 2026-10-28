@@ -4,6 +4,50 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { reviews } from "@/components/site/data";
 
+const reviewsBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.delhipuppypoint.co.in/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Customer Reviews",
+      item: "https://www.delhipuppypoint.co.in/reviews",
+    },
+  ],
+};
+
+const reviewsListSchema = {
+  "@context": "https://schema.org",
+  "@type": "PetStore",
+  name: "Delhi Puppy Point",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: reviews.length.toString(),
+    bestRating: "5",
+  },
+  review: reviews.map((r) => ({
+    "@type": "Review",
+    author: {
+      "@type": "Person",
+      name: r.name,
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: r.rating.toString(),
+      bestRating: "5",
+    },
+    reviewBody: r.text,
+  })),
+};
+
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
@@ -13,10 +57,28 @@ export const Route = createFileRoute("/reviews")({
         content:
           "Read genuine reviews and adoption stories from pet parents across Delhi, Gurgaon, Noida, Faridabad, and Ghaziabad who bought healthy puppies from Delhi Puppy Point.",
       },
+      {
+        name: "keywords",
+        content:
+          "delhi puppy point reviews, buy puppy delhi feedback, pet shop reviews gurgaon, trusted puppy seller ncr ratings",
+      },
       { property: "og:title", content: "Pet Parent Reviews | Delhi Puppy Point" },
       {
         property: "og:description",
         content: "Over 5,000 happy families across Delhi NCR rate Delhi Puppy Point 4.9/5 stars for healthy, purebred puppies.",
+      },
+      { property: "og:url", content: "https://www.delhipuppypoint.co.in/reviews" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://www.delhipuppypoint.co.in/reviews" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(reviewsBreadcrumbSchema),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(reviewsListSchema),
       },
     ],
   }),

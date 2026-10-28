@@ -6,6 +6,52 @@ import { Footer } from "@/components/site/Footer";
 import { ServiceCard } from "@/components/site/ServiceCard";
 import { puppies, puppyCategories, type PuppyCategory } from "@/components/site/data";
 
+const servicesBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.delhipuppypoint.co.in/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Available Puppies",
+      item: "https://www.delhipuppypoint.co.in/services",
+    },
+  ],
+};
+
+const puppiesCatalogSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Available Purebred Puppies in Delhi NCR",
+  description: "Certified purebred puppies for sale in Delhi, Gurugram, Noida, and Faridabad.",
+  numberOfItems: puppies.length,
+  itemListElement: puppies.slice(0, 10).map((p, idx) => ({
+    "@type": "ListItem",
+    position: idx + 1,
+    item: {
+      "@type": "Product",
+      name: `${p.name} Puppy in Delhi NCR`,
+      description: p.desc,
+      category: p.category,
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "INR",
+        availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "PetStore",
+          name: "Delhi Puppy Point",
+        },
+      },
+    },
+  })),
+};
+
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
@@ -15,10 +61,28 @@ export const Route = createFileRoute("/services")({
         content:
           "Browse purebred puppies for sale in Delhi, Gurgaon, Noida, Faridabad & Ghaziabad. Golden Retriever, Labrador, Shih Tzu, German Shepherd, Beagle, Husky & more with KCI papers.",
       },
+      {
+        name: "keywords",
+        content:
+          "puppy breeds delhi, golden retriever puppies, labrador price delhi, shih tzu puppies for sale, beagle puppies gurgaon, husky puppy delhi ncr",
+      },
       { property: "og:title", content: "Available Puppies for Sale in Delhi NCR | Delhi Puppy Point" },
       {
         property: "og:description",
         content: "100% vaccinated, dewormed, vet-certified puppies available with doorstep delivery in Delhi NCR.",
+      },
+      { property: "og:url", content: "https://www.delhipuppypoint.co.in/services" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://www.delhipuppypoint.co.in/services" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(servicesBreadcrumbSchema),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(puppiesCatalogSchema),
       },
     ],
   }),

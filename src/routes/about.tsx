@@ -6,6 +6,25 @@ import goldenRetrieverImg from "@/assets/puppies/golden-retriever.jpg";
 import germanShepherdImg from "@/assets/puppies/german-shepherd.png";
 import labradorImg from "@/assets/puppies/labrador.jpg";
 
+const aboutBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.delhipuppypoint.co.in/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About Us",
+      item: "https://www.delhipuppypoint.co.in/about",
+    },
+  ],
+};
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -15,10 +34,24 @@ export const Route = createFileRoute("/about")({
         content:
           "Learn about Delhi Puppy Point's ethical breeding philosophy, veterinary health standards, and clean kennel facility serving Delhi, Gurgaon, Noida, and Faridabad since 2014.",
       },
+      {
+        name: "keywords",
+        content:
+          "ethical dog breeders delhi, puppy kennel delhi, certified dog breeder ncr, puppy point chattarpur, verified dog kennel south delhi",
+      },
       { property: "og:title", content: "About Us | Delhi Puppy Point — Ethical Puppy Store in Delhi NCR" },
       {
         property: "og:description",
         content: "Over 5,000 purebred puppies placed into loving homes with 100% health guarantee and ethical care.",
+      },
+      { property: "og:url", content: "https://www.delhipuppypoint.co.in/about" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://www.delhipuppypoint.co.in/about" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(aboutBreadcrumbSchema),
       },
     ],
   }),

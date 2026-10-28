@@ -4,6 +4,46 @@ import { useState } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 
+const contactBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.delhipuppypoint.co.in/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Contact & Kennel Visit",
+      item: "https://www.delhipuppypoint.co.in/contact",
+    },
+  ],
+};
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Delhi Puppy Point",
+  description: "Schedule kennel visits, live WhatsApp video calls, or inquire about puppies.",
+  url: "https://www.delhipuppypoint.co.in/contact",
+  mainEntity: {
+    "@type": "PetStore",
+    name: "Delhi Puppy Point",
+    telephone: "+91-9870166623",
+    email: "info@delhipuppypoint.com",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+91-9870166623",
+      contactType: "customer service",
+      areaServed: "IN",
+      availableLanguage: ["Hindi", "English"],
+    },
+  },
+};
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
@@ -13,10 +53,28 @@ export const Route = createFileRoute("/contact")({
         content:
           "Contact Delhi Puppy Point for puppy inquiries, live WhatsApp video calls, and kennel visit appointments in South Delhi and Gurugram. Call +91 98701 66623.",
       },
+      {
+        name: "keywords",
+        content:
+          "contact delhi puppy point, visit puppy kennel delhi, puppy shop phone number, live video call puppy buying, south delhi dog nursery",
+      },
       { property: "og:title", content: "Book a Puppy & Kennel Visit | Delhi Puppy Point" },
       {
         property: "og:description",
         content: "Schedule your kennel visit or request instant WhatsApp photos and videos of available purebred puppies.",
+      },
+      { property: "og:url", content: "https://www.delhipuppypoint.co.in/contact" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://www.delhipuppypoint.co.in/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(contactBreadcrumbSchema),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(contactPageSchema),
       },
     ],
   }),

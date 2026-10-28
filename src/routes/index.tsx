@@ -31,6 +31,19 @@ import goldenRetrieverImg from "@/assets/puppies/golden-retriever.jpg";
 import labradorImg from "@/assets/puppies/labrador.jpg";
 import shihTzuImg from "@/assets/puppies/shih-tzu.jpg";
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -40,10 +53,24 @@ export const Route = createFileRoute("/")({
         content:
           "Buy certified healthy puppies for sale in Delhi, Gurgaon, Noida, Faridabad & Ghaziabad. Golden Retriever, Labrador, Shih Tzu, German Shepherd, Beagle, Husky with KCI papers, vet certificate and AC home delivery.",
       },
+      {
+        name: "keywords",
+        content:
+          "puppies for sale in delhi, puppy shop near me, buy puppies delhi, purebred puppies delhi ncr, dog sale in gurgaon, noida puppy kennel, kci puppies delhi",
+      },
       { property: "og:title", content: "Puppies for Sale in Delhi NCR | Delhi Puppy Point" },
       {
         property: "og:description",
         content: "Delhi NCR's #1 trusted puppy store. 100% purebred, vaccinated, dewormed puppies with live video calls and safe home delivery.",
+      },
+      { property: "og:url", content: "https://www.delhipuppypoint.co.in/" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://www.delhipuppypoint.co.in/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(faqSchema),
       },
     ],
   }),
